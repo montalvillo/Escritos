@@ -1,0 +1,691 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mi Periódico Digital</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    background: #e9e9e9;
+    color: #292929;
+}
+
+/* CABECERA */
+
+header {
+    background: #172d49;
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+    border-bottom: 5px solid #c49a46;
+}
+
+header h1 {
+    font-size: 38px;
+    margin: 5px;
+    letter-spacing: 2px;
+}
+
+header p {
+    font-family: Arial, sans-serif;
+    color: #e5d4ad;
+}
+
+/* CONTENEDOR */
+
+.contenedor {
+    max-width: 1100px;
+    margin: 25px auto;
+    padding: 25px;
+    background: white;
+    box-shadow: 0 2px 12px #bbb;
+    border-radius: 5px;
+}
+
+/* MENU */
+
+.menu {
+    background: #f3f0e9;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 3px solid #c49a46;
+    margin-bottom: 25px;
+}
+
+.menu h2 {
+    color: #172d49;
+}
+
+select {
+    width: 100%;
+    max-width: 650px;
+    padding: 13px;
+    font-size: 16px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    background: white;
+}
+
+/* PORTADA */
+
+.portada {
+    text-align: center;
+    padding: 30px 10px;
+}
+
+.portada h2 {
+    color: #a12c2c;
+    font-size: 28px;
+}
+
+.portada p {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* ARTICULOS */
+
+.articulo {
+    display: none;
+    animation: aparecer .5s;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.articulo h2 {
+    color: #a12c2c;
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.subtitulo {
+    color: #b18428;
+    font-size: 21px;
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.fecha {
+    text-align: center;
+    color: #777;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+/* GALERIA DE FOTOGRAFIAS */
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 20px 0 30px;
+}
+
+.galeria img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform .3s;
+}
+
+.galeria img:hover {
+    transform: scale(1.03);
+}
+
+/* TEXTO */
+
+.articulo p {
+    font-size: 18px;
+    line-height: 1.8;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+.articulo h3 {
+    color: #17608b;
+    font-size: 23px;
+    border-left: 5px solid #c49a46;
+    padding-left: 12px;
+    margin-top: 30px;
+}
+
+/* VIDEOS MP4 */
+
+.video-articulo {
+    width: 100%;
+    max-width: 850px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.video-articulo video {
+    display: block;
+    width: 100%;
+    max-height: 500px;
+    background: black;
+    border-radius: 8px;
+    transition: transform .3s;
+}
+
+/* AMPLIAR AL PASAR EL RATON */
+
+@media (hover: hover) and (pointer: fine) {
+    .video-articulo video:hover {
+        transform: scale(1.04);
+    }
+}
+
+/* BOTON VOLVER A VER */
+
+.repetir-video {
+    display: none;
+    margin: 12px auto;
+    padding: 11px 22px;
+    background: #17608b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.repetir-video:hover {
+    background: #b18428;
+}
+
+/* VIDEOS YOUTUBE */
+
+.video-youtube {
+    max-width: 850px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.video-youtube a {
+    position: relative;
+    display: block;
+}
+
+.video-youtube img {
+    width: 100%;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.video-youtube span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #b51f1f;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 6px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+/* BOTON INICIO */
+
+.volver {
+    display: block;
+    margin: 35px auto 10px;
+    padding: 13px 30px;
+    background: #172d49;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.volver:hover {
+    background: #b18428;
+}
+
+/* PIE DE PAGINA */
+
+footer {
+    background: #172d49;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+}
+
+/* MOVILES */
+
+@media (max-width: 650px) {
+
+    header h1 {
+        font-size: 27px;
+    }
+
+    .contenedor {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .galeria {
+        grid-template-columns: 1fr;
+    }
+
+    .galeria img {
+        height: auto;
+        max-height: 300px;
+    }
+
+    .articulo h2 {
+        font-size: 25px;
+    }
+
+    .articulo p {
+        font-size: 16px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>MI PERIÓDICO DIGITAL</h1>
+    <p>ACTUALIDAD · MOTOGP · FORMULA1 · FUTBOL</p>
+</header>
+
+<div class="contenedor">
+
+<!-- INICIO Y LISTA DESPLEGABLE -->
+
+<div id="inicio">
+
+    <div class="menu">
+
+        <h2>SELECCIONA UNA SECCIÓN Y UN ARTÍCULO</h2>
+
+        <select id="listaArticulos" onchange="mostrarArticulo()">
+
+            <option value="">-- ELIGE UN ARTÍCULO --</option>
+
+            <optgroup label="Actualidad">
+                <option value="articulo1">La actualidad</option>
+                
+            </optgroup>
+
+            <optgroup label="MotoGP">
+                <option value="articulo3"></option>
+            </optgroup>
+
+            <optgroup label="HISTORIA">
+                <option value="articulo4">Recuerdos del pasado</option>
+            </optgroup>
+
+            <optgroup label="OPINIÓN">
+                <option value="articulo5">Opinión y reflexión</option>
+            </optgroup>
+
+        </select>
+
+    </div>
+
+    <div class="portada">
+
+        <h2>BIENVENIDOS A NUESTRO PERIÓDICO</h2>
+
+        <p>
+            Un espacio para mis noticias escritas por las mañana
+        </p>
+
+        <p>
+            Selecciona un artículo para comenzar.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- ARTICULO 1 -->
+
+<div id="articulo1" class="articulo">
+
+    <h2>LA ACTUALIDAD</h2>
+
+    <div class="subtitulo">
+        Las noticias más destacadas
+    </div>
+
+    <div class="fecha">Fecha de publicación: 11/11/2026</div>
+
+    <div class="galeria">
+        <img src="imagenes/noticia1.jpg" alt="Noticia principal">
+        <img src="imagenes/noticia2.jpg" alt="Segunda noticia">
+    </div>
+
+    <h3>Una noticia para destacar</h3>
+
+    <p>
+        Escribe aquí el texto de tu noticia.
+        Puedes desarrollar toda la información
+        y añadir tantos párrafos como necesites.
+    </p>
+
+    <!-- PRIMER VIDEO MP4 -->
+
+    <h3>Vídeo relacionado con la noticia</h3>
+
+    <div class="video-articulo">
+
+        <video controls preload="metadata" playsinline>
+            <source src="videos/video1.mp4" type="video/mp4">
+            Tu navegador no puede reproducir este vídeo.
+        </video>
+
+        <button class="repetir-video">
+            ▶ VOLVER A VER EL VÍDEO
+        </button>
+
+    </div>
+
+    <h3>Más información</h3>
+
+    <p>
+        Continúa escribiendo aquí el artículo.
+        Puedes colocar fotografías y vídeos
+        entre los distintos párrafos.
+    </p>
+
+    <!-- SEGUNDO VIDEO MP4 -->
+
+    <div class="video-articulo">
+
+        <video controls preload="metadata" playsinline>
+            <source src="videos/video2.mp4" type="video/mp4">
+        </video>
+
+        <button class="repetir-video">
+            ▶ VOLVER A VER EL VÍDEO
+        </button>
+
+    </div>
+
+    <button class="volver" onclick="volverInicio()">
+        ⬅ VOLVER AL INICIO
+    </button>
+
+</div>
+
+
+<!-- ARTICULO 2 -->
+
+<div id="articulo2" class="articulo">
+
+    <h2>NOTICIAS LOCALES</h2>
+
+    <div class="subtitulo">
+        Información de nuestro entorno
+    </div>
+
+    <div class="galeria">
+        <img src="imagenes/local1.jpg" alt="Noticia local">
+        <img src="imagenes/local2.jpg" alt="Localidad">
+    </div>
+
+    <h3>Actualidad de nuestra localidad</h3>
+
+    <p>
+        Escribe aquí tu noticia local.
+        Puedes añadir fotografías y vídeos.
+    </p>
+
+    <div class="video-articulo">
+
+        <video controls preload="metadata" playsinline>
+            <source src="videos/video3.mp4" type="video/mp4">
+        </video>
+<div class="video-youtube">
+    <a href="https://youtu.be/vJyDFVFmZ9g"
+       target="_blank" rel="noopener">
+        <img src="imagenes/portada-video.jpg"
+             alt="Vídeo de YouTube">
+        <span>▶ VER VÍDEO</span>
+    </a>
+</div>
+        <button class="repetir-video">
+            ▶ VOLVER A VER EL VÍDEO
+        </button>
+
+    </div>
+
+    <button class="volver" onclick="volverInicio()">
+        ⬅ VOLVER AL INICIO
+    </button>
+
+
+</div>
+
+
+<!-- ARTICULO 3 -->
+
+<div id="articulo3" class="articulo">
+
+    <h2>CULTURA Y SOCIEDAD</h2>
+
+    <div class="subtitulo">
+        Arte, tradiciones y cultura
+    </div>
+
+    <div class="galeria">
+        <img src="imagenes/cultura1.jpg" alt="Cultura">
+        <img src="imagenes/cultura2.jpg" alt="Sociedad">
+    </div>
+
+    <h3>La cultura de nuestra sociedad</h3>
+
+    <p>
+        Escribe aquí tu artículo cultural.
+        Añade toda la información que desees.
+    </p>
+
+    <button class="volver" onclick="volverInicio()">
+        ⬅ VOLVER AL INICIO
+    </button>
+
+</div>
+
+
+<!-- ARTICULO 4 -->
+
+<div id="articulo4" class="articulo">
+
+    <h2>RECUERDOS DEL PASADO</h2>
+
+    <div class="subtitulo">
+        Nuestra historia y nuestras raíces
+    </div>
+
+    <div class="galeria">
+        <img src="imagenes/historia1.jpg" alt="Historia">
+        <img src="imagenes/historia2.jpg" alt="Recuerdos">
+        <img src="imagenes/historia3.jpg" alt="Fotografía antigua">
+    </div>
+
+    <h3>Un viaje a través del tiempo</h3>
+
+    <p>
+        Escribe aquí los recuerdos históricos,
+        relatos y acontecimientos del pasado.
+    </p>
+
+    <button class="volver" onclick="volverInicio()">
+        ⬅ VOLVER AL INICIO
+    </button>
+
+</div>
+
+
+<!-- ARTICULO 5 -->
+
+<div id="articulo5" class="articulo">
+
+    <h2>OPINIÓN Y REFLEXIÓN</h2>
+
+    <div class="subtitulo">
+        Un espacio para expresar nuestras ideas
+    </div>
+
+    <div class="galeria">
+        <img src="imagenes/opinion1.jpg" alt="Opinión">
+        <img src="imagenes/opinion2.jpg" alt="Reflexión">
+    </div>
+
+    <h3>Mi punto de vista</h3>
+
+    <p>
+        Escribe aquí tus opiniones,
+        reflexiones y comentarios.
+    </p>
+
+    <button class="volver" onclick="volverInicio()">
+        ⬅ VOLVER AL INICIO
+    </button>
+
+</div>
+
+</div>
+
+<footer>
+    MI PERIÓDICO DIGITAL · Todos los derechos reservados
+</footer>
+
+
+<script>
+
+// MOSTRAR ARTICULO
+
+function mostrarArticulo() {
+
+    ocultarTodos();
+
+    let seleccionado =
+        document.getElementById("listaArticulos").value;
+
+    if (seleccionado !== "") {
+
+        document.getElementById("inicio").style.display = "none";
+
+        document.getElementById(seleccionado).style.display = "block";
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+}
+
+
+// OCULTAR TODOS LOS ARTICULOS
+
+function ocultarTodos() {
+
+    document.querySelectorAll(".articulo").forEach(function(articulo) {
+        articulo.style.display = "none";
+    });
+
+}
+
+
+// VOLVER AL INICIO
+
+function volverInicio() {
+
+    // Parar los vídeos y ocultar sus reproductores
+    document.querySelectorAll(".video-articulo").forEach(function(bloque) {
+
+        let video = bloque.querySelector("video");
+        let boton = bloque.querySelector(".repetir-video");
+
+        video.pause();
+        video.currentTime = 0;
+
+        video.style.display = "block";
+        boton.style.display = "none";
+
+    });
+
+    ocultarTodos();
+
+    document.getElementById("inicio").style.display = "block";
+
+    document.getElementById("listaArticulos").selectedIndex = 0;
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+// OCULTAR EL VIDEO AL TERMINAR
+
+document.querySelectorAll(".video-articulo").forEach(function(bloque) {
+
+    let video = bloque.querySelector("video");
+    let boton = bloque.querySelector(".repetir-video");
+
+    // Al terminar la reproducción
+    video.addEventListener("ended", function() {
+
+        video.style.display = "none";
+
+        boton.style.display = "block";
+
+    });
+
+    // Volver a reproducir el vídeo
+    boton.addEventListener("click", function() {
+
+        video.currentTime = 0;
+
+        video.style.display = "block";
+
+        boton.style.display = "none";
+
+        let reproduccion = video.play();
+
+        if (reproduccion !== undefined) {
+            reproduccion.catch(function() {
+                boton.style.display = "block";
+            });
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
